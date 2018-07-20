@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Database.User>
+
+@{
+    ViewBag.Title = "CandyHook";
+    Layout = "~/Views/Shared/_CustomMapLayout.cshtml";
+}
+@section Scripts
+{
+    <script src="@Url.Content("~/Scripts/ol.js")"></script>
+    <script src="@Url.Content("~/Scripts/UsersScripts/pageController.js")"></script>
+}
+<div class="login-content">
+    <button type="button" class="btn btn-info btn-lg callcs" data-toggle="modal" data-target="#newUserPP">Log In</button>@*TODO:*@
+    <button type="button" class="btn btn-info btn-lg callcs" data-toggle="modalRegister" data-target="#newUserPP">Register</button>
+</div>
+<div style="clear:both"></div>
+
+
+<div class="row-fluid">
+    <div class="span12">
+        @RenderPage("~/Module/Map/View/Template/map.cshtml")
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div id="newUserPP" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">×</button>
+                <h3 ng-hide="newUser">New user</h3>
+            </div>
+
+
+            <ul class="nav nav-tabs" id="tabContent">
+                <li class="active"><a href="#details" data-toggle="tab">Personal info</a></li>
+                <li><a href="#photo-tab" data-toggle="tab">Photos</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane active" id="details" style="padding:15px">
+                    <label for="Name">Name:</label> <input name="Name" placeholder="Name" id="Name" type="text" class="form-control name" />
+                    <label for="Soname">Soname:</label> <input name="Soname" placeholder="Soname" id="Soname" type="text" class="form-control soname" />
+                    <label for="password">Password:</label> <input name="password" placeholder="password" id="password" type="password" class="form-control password" />
+                    <label for="Email">Email:</label> <input name="Email" placeholder="Email" id="Email" type="email" class="form-control email" />
+                    <label for="Phone">Phone:</label> <input name="Phone" placeholder="Phone" id="Phone" type="number" class="form-control phone" />
+                    <label for="Price">Price:</label> <input name="Price" placeholder="Price" id="Price" type="number" class="form-control price" />
+                    <label for="Description">Description:</label>
+                    <textarea name="Description" id="Description" class="form-control description" rows="5"></textarea>
+                </div>
+
+                <div class="tab-pane" id="photo-tab">
+                    <div style="padding:15px">
+                        @RenderPage("~/Module/File/View/Template/File.cshtml")
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default js-save-user" style="float:left">Save</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

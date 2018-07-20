@@ -1,0 +1,33 @@
+﻿<script src="~/Module/File/View/JS/File.js"></script>
+<link rel="stylesheet" href="~/Module/File/View/CSS/File.css">
+
+<div class="UnloadImg"></div>
+
+<form class="FileWrapper" action="/File/Edit" enctype="multipart/form-data" method="post" target="hiddenframe">
+    <div class="file">
+        <label class='filebutton'>
+            <span>
+                <input type='file' name='files'/>
+            </span>
+        </label>
+    </div>
+    
+    @*<button onclick="file.add(this,'FileWrapper'); return false;" class="btn FileAdd"></button>*@
+</form>
+<script>
+    var maxPhoto = 5;
+    $(".filebutton input:file").on('change', function () {
+
+        if ($(".UnloadImg").length >= maxPhoto) {
+            alert("Max photo limit");
+            return;
+        }
+
+        $(".FileWrapper").submit();
+
+    });
+    function frameOnload(event){
+        file.multy(event);
+    }
+</script>
+<iframe id="hiddenframe" name="hiddenframe" style="display:none" onload="frameOnload(this)"></iframe>

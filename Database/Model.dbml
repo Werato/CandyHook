@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="LearnDB" Class="ModelDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=BTF_EMIL;Initial Catalog=LearnDB;Integrated Security=True" SettingsObjectName="Database.Properties.Settings" SettingsPropertyName="LearnDBConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Photo" Member="Photos">
+    <Type Name="Photo">
+      <Column Name="PhotoId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FileData" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="MnimeType" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="ObjectName" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ObjectId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Soname" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(12)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="Lon" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Lat" Type="System.Single" DbType="Real" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Price" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
