@@ -25,7 +25,7 @@ namespace MapFinder.Module.Map
         {
             using (var db = new DbWorker())
             {
-                string model = db.getModelByUserId(data);
+                string model = db.getModel(data);
 
                 return model;
             }

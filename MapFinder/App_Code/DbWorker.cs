@@ -11,8 +11,8 @@ namespace MapFinder.App_Code
 {
     public class DbWorker : IDisposable
     {
-
-        public string getModelByUserId(string UserId)
+ 
+        public string getModel(string UserId)
         {
             using (var db = new ModelDataContext())
             {
@@ -31,6 +31,26 @@ namespace MapFinder.App_Code
             }
 
 
+        }
+
+        public List getModel()
+        {
+            using (var db = new ModelDataContext())
+            {
+                //by user Id Get photo
+                var model = db.Users.ToList();
+                    //from u in db.Users
+                    //        join p in db.Photos on u.UserId equals p.ObjectId //into tmp
+                    //        //where u.UserId == Convert.ToInt32(p.ObjectId)
+                    //        //from photo in tmp.DefaultIfEmpty()
+                    //        select new
+                    //        {
+                    //            p.PhotoId,
+                    //            userData = JsonConvert.SerializeObject(u)
+                    //        };
+
+                return model;//.ToString();
+            }
         }
 
         public string getUsersCoordinteByRange(float range)
@@ -97,6 +117,11 @@ namespace MapFinder.App_Code
             }
         }
 
+        public byte[] GetByts(int fileId)
+        {
+            return null;
+        }
+
         private string CalculateMD5Hash(string input)
         {
             // step 1, calculate MD5 hash from input
@@ -109,7 +134,7 @@ namespace MapFinder.App_Code
             for (int i = 0; i < hash.Length; i++)
             {
                 sb += (hash[i].ToString("X2"));
-            }
+            } 
             return sb.ToString();
         }
 

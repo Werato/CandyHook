@@ -37,10 +37,10 @@ namespace MapFinder.Controllers
         [OutputCacheAttribute(VaryByParam = "*", Duration = 0, NoStore = true)]
         public ActionResult Index()
         {
-            using (var db = new ModelDataContext())
+            using (var db = new DbWorker())
             {
-                var users = db.Users.ToList(); 
-                return View(users);
+                var model = db.getModel("1");
+                return View(model);
             }
         }
 
@@ -99,23 +99,9 @@ namespace MapFinder.Controllers
         {
             using (var db = new DbWorker())
             {
-                //var model = from photo in db.Photos
-                //            join user in db.Users on photo.ObjectId equals user.UserId into tmp
-                //            where photo.ObjectId == Convert.ToInt32(Data)
-                //            from userData in tmp.DefaultIfEmpty() 
-                //            select new
-                //            {
-                //                userData,
-                //                photoId = photo.PhotoId,
-                //                objName = photo.ObjectName
-                //                //Name = ed.EmpName,
-                //                //Department = dpem.DeptName
-                //            };
-
-                string model = db.getModelByUserId(userId);
+                string model = db.getModel(userId);
 
                 return Json(model);
-
 
             }
         }

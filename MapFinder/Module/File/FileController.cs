@@ -39,31 +39,6 @@ namespace MapFinder.Module.File
             return String.Format("File/ShowImg?strPhotoId={0}", PhotoId);
         }
 
-        private int StoreFile(HttpPostedFileBase file)
-        {
-            byte[] data = new byte[file.ContentLength];
-            file.InputStream.Read(data, 0, file.ContentLength);
-
-            using (var db = new ModelDataContext())
-            {
-                if(!file.ContentType.Contains("image"))
-                {
-                    return 0;
-                }
-
-                var photo = new Photo();
-
-                photo.FileData = data;
-                photo.MnimeType = file.ContentType;
-
-                db.Photos.InsertOnSubmit(photo);
-
-                db.SubmitChanges();
-
-                return photo.PhotoId;
-            }
-        }
-
         [HttpGet]
         public ActionResult ShowImg(string strPhotoId)
         {
